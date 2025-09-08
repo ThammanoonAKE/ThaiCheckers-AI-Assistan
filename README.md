@@ -8,7 +8,7 @@
 
 > **Authentic Thai Checkers game with AI assistance, built with modern web technologies**
 > 
-> เกมหมากฮอสไทยแบบแท้พร้อม AI ผู้ช่วย สร้างด้วยเทคโนโลジีเว็บสมัยใหม่
+> เกมหมากฮอสไทยแบบแท้พร้อม AI ผู้ช่วย สร้างด้วยเทคโนโลยีเว็บสมัยใหม่
 
 ## ✨ Features | คุณสมบัติ
 
@@ -56,7 +56,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/thai-checkers-ai-assistant.git
+git clone https://github.com/ThammanoonAKE/thai-checkers-ai-assistant.git
 cd thai-checkers-ai-assistant
 
 # Install dependencies
@@ -164,16 +164,6 @@ src/
 - 🖱️ **Click to Move** - Intuitive piece selection
 - 📱 **Mobile Responsive** - Works on all device sizes
 - 🔄 **Smooth Transitions** - Fluid animations throughout
-
-## 📸 Screenshots
-
-### Game Board with AI Suggestions
-![Game Screenshot](docs/images/game-screenshot.png)
-*Main game interface with move recommendations*
-
-### AI Chatbot Interface  
-![Chatbot Screenshot](docs/images/chatbot-screenshot.png)
-*Interactive AI assistant for strategy advice*
 
 ## 🤝 Contributing
 
