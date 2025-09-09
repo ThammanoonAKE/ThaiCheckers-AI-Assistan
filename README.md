@@ -4,11 +4,16 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3-38B2AC)](https://tailwindcss.com/)
 [![Gemini AI](https://img.shields.io/badge/Gemini-2.0%20Flash-yellow)](https://ai.google.dev/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-black)](https://thai-checkers-ai.vercel.app)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 > **Authentic Thai Checkers game with AI assistance, built with modern web technologies**
 > 
 > เกมหมากฮอสไทยแบบแท้พร้อม AI ผู้ช่วย สร้างด้วยเทคโนโลยีเว็บสมัยใหม่
+
+## 🎮 **[Play Live Demo](https://thai-checkers-ai.vercel.app)** | [เล่นเดโมสด](https://thai-checkers-ai.vercel.app)
+
+![Thai Checkers AI Assistant](https://img.shields.io/badge/Status-Live-brightgreen) ![AI Working](https://img.shields.io/badge/AI-Functional-success)
 
 ## ✨ Features | คุณสมบัติ
 
@@ -19,10 +24,12 @@
 - ⚠️ **Mandatory Capture** - กฎการบังคับกิน (หักขา) แบบไทยแท้
 
 ### 🤖 **AI Features**
-- 🧠 **Smart AI Assistant** - ใช้อัลกอริธึม Minimax + Alpha-Beta Pruning
-- 💡 **Move Recommendations** - แนะนำท่าเดินพร้อมคะแนน
+- 🧠 **Smart AI Assistant** - ใช้อัลกอริธึม Minimax + Alpha-Beta Pruning (Depth: 6)
+- 🎯 **Automatic AI Moves** - AI เดินอัตโนมัติหลังผู้เล่นเดิน (1.5 วินาที)
+- 💡 **Move Recommendations** - แนะนำท่าเดินพร้อมคะแนนความมั่นใจ
 - 🤖 **AI Chatbot** - ปรึกษา AI เกี่ยวกับกฎและกลยุทธ์ (Powered by Gemini 2.0)
 - 📊 **Real-time Analysis** - วิเคราะห์สถานการณ์เกมแบบเรียลไทม์
+- ⚡ **Performance Optimized** - Alpha-Beta pruning เพื่อความเร็วสูงสุด
 
 ### 🎨 **UI/UX Features**
 - 📱 **Responsive Design** - รองรับทุกขนาดหน้าจอ
@@ -47,12 +54,17 @@
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### 🌐 Online Demo
+**No installation required!** Just visit: **[https://thai-checkers-ai.vercel.app](https://thai-checkers-ai.vercel.app)**
+
+### 💻 Local Development
+
+#### Prerequisites
 - Node.js 18+ 
 - npm or yarn
 - Gemini API Key (for AI chatbot)
 
-### Installation
+#### Installation
 
 ```bash
 # Clone the repository
@@ -88,12 +100,19 @@ http://localhost:3000
 
 ## 🎮 How to Play | วิธีเล่น
 
-1. **Start Game** - Black player (you) moves first | ผู้เล่นดำ (คุณ) เริ่มก่อน
-2. **Select Piece** - Click on your piece to select | คลิกหมากของคุณเพื่อเลือก
-3. **Make Move** - Click green squares to move | คลิกช่องเขียวเพื่อเดิน
-4. **Get AI Help** - Use "Show AI Suggestions" button | ใช้ปุ่ม "แสดงคำแนะนำ AI"
-5. **Ask AI** - Chat with AI for strategies and rules | สอบถาม AI เกี่ยวกับกลยุทธ์และกฎ
-6. **Win Condition** - Capture all opponent pieces | เป้าหมายคือกินหมากศัตรูให้หมด
+1. **🌐 Visit Live Demo** - Go to [https://thai-checkers-ai.vercel.app](https://thai-checkers-ai.vercel.app)
+2. **🎯 Start Game** - Black player (you) moves first | ผู้เล่นดำ (คุณ) เริ่มก่อน
+3. **🖱️ Select Piece** - Click on your piece to select | คลิกหมากของคุณเพื่อเลือก
+4. **✅ Make Move** - Click green squares to move | คลิกช่องเขียวเพื่อเดิน
+5. **🤖 AI Responds** - AI automatically moves after 1.5 seconds | AI เดินอัตโนมัติหลัง 1.5 วินาที
+6. **💡 Get AI Help** - Use "Show AI Suggestions" button | ใช้ปุ่ม "แสดงคำแนะนำ AI"
+7. **🗣️ Ask AI** - Chat with AI for strategies and rules | สอบถาม AI เกี่ยวกับกลยุทธ์และกฎ
+8. **🏆 Win Condition** - Capture all opponent pieces | เป้าหมายคือกินหมากศัตรูให้หมด
+
+### 🎯 Game Controls
+- **🔄 New Game** - Reset the board | เริ่มเกมใหม่
+- **💡 AI Suggestions** - Toggle move recommendations | แสดง/ซ่อนคำแนะนำ
+- **💬 AI Chat** - Get strategies and rule explanations | สอบถามกลยุทธ์และกฎ
 
 ## คำสั่งที่มี (Available Scripts)
 
@@ -111,23 +130,27 @@ npm run lint     # ตรวจสอบ code style
 | **Frontend** | Next.js 14 | React framework with App Router |
 | **Language** | TypeScript | Type-safe JavaScript |
 | **Styling** | Tailwind CSS | Utility-first CSS framework |
-| **AI Engine** | Custom Minimax | Alpha-Beta pruning algorithm |
+| **AI Engine** | Custom Minimax | Alpha-Beta pruning algorithm (Depth 6) |
 | **AI Chatbot** | Gemini 2.0 Flash | Google's latest AI model |
 | **State Management** | React Hooks | Built-in React state management |
+| **Deployment** | Vercel | Serverless platform with auto-deploy |
+| **Performance** | React useRef | Optimized state management for AI |
 
 ## 🧠 AI Algorithm
 
 ### Minimax with Alpha-Beta Pruning
-- **Search Depth**: 6 levels (configurable)
-- **Board Evaluation**: Advanced heuristics for piece positioning
-- **Performance**: Optimized with alpha-beta pruning
+- **Search Depth**: 6 levels (configurable) for optimal performance
+- **Board Evaluation**: Advanced heuristics for piece positioning and control
+- **Performance**: Optimized with alpha-beta pruning for fast response (1.5s)
 - **Real-time Analysis**: Live move recommendations with confidence scores
+- **Automatic Play**: AI makes moves automatically after human turns
 
-### AI Chatbot Features
-- **Game Context Awareness**: Understands current board state
-- **Rule Explanations**: Explains Thai Checkers rules in Thai
-- **Strategy Advice**: Provides tactical recommendations
-- **Move Analysis**: Analyzes specific positions and moves
+### AI Chatbot Features (Gemini 2.0)
+- **Game Context Awareness**: Understands current board state and position
+- **Rule Explanations**: Explains Thai Checkers rules in Thai language
+- **Strategy Advice**: Provides tactical recommendations and analysis
+- **Move Analysis**: Analyzes specific positions and suggests improvements
+- **Interactive Learning**: Answers questions about gameplay mechanics
 
 ## 📁 Project Structure
 
@@ -187,16 +210,39 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Next.js team for the amazing framework
 - Tailwind CSS for beautiful styling utilities
 
+## 🚀 Deployment
+
+This project is deployed on **Vercel** with automatic deployments from the main branch.
+
+- **🌐 Live Site**: [https://thai-checkers-ai.vercel.app](https://thai-checkers-ai.vercel.app)
+- **📊 Status**: [![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-black)](https://thai-checkers-ai.vercel.app)
+- **🤖 AI Status**: ![AI Working](https://img.shields.io/badge/AI-Functional-success)
+
+### Deployment Features
+- ⚡ **Serverless Functions** - API routes for Gemini AI chatbot
+- 🔄 **Auto-Deploy** - Automatic deployments from GitHub
+- 🌍 **Global CDN** - Fast loading worldwide
+- 📱 **Mobile Optimized** - Perfect performance on all devices
+
+### Environment Variables
+For deployment, make sure to set:
+```
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
 ## 📞 Support & Contact
 
 - 🐛 **Issues**: [GitHub Issues](https://github.com/ThammanoonAKE/thai-checkers-ai-assistant/issues)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/ThammanoonAKE/thai-checkers-ai-assistant/discussions)
+- 🌐 **Live Demo**: [https://thai-checkers-ai.vercel.app](https://thai-checkers-ai.vercel.app)
 
 ---
 
 <div align="center">
 
 **🎯 Made with ❤️ for Thai Checkers enthusiasts**
+
+**🌐 [Play Online Now](https://thai-checkers-ai.vercel.app) | เล่นออนไลน์เลย**
 
 *If you enjoyed this project, please consider giving it a ⭐ on GitHub!*
 

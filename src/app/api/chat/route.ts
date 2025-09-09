@@ -77,7 +77,7 @@ ${gameContext.gameBoard}
 
 ${gameContext.recommendations && gameContext.recommendations.length > 0 ? 
 `AI แนะนำท่าเดิน (จากการวิเคราะห์ระดับลึก):
-${gameContext.recommendations.slice(0, 3).map((rec, i) => 
+${gameContext.recommendations.slice(0, 3).map((rec: any, i: number) => 
   `${i + 1}. คะแนน: ${rec.score.toFixed(1)} (ความลึก: ${rec.depth}) - ${rec.move.captures?.length ? `กินหมากได้ ${rec.move.captures.length} ตัว` : 'ท่าเดินปกติ'}`
 ).join('\n')}` : ''}`
     }

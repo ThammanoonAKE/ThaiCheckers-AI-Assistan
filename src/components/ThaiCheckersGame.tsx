@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback, useEffect, useRef } from 'react'
-import { GameState, Position, Move, AIRecommendation } from '@/types/game'
+import { GameState, Position, Move, AIRecommendation, Piece } from '@/types/game'
 import { createInitialBoard, getPossibleMovesForPiece, getPossibleMoves, makeMove as makeMoveOnBoard, isGameOver } from '@/lib/gameLogic'
 import { getBestMove, getAllPossibleMovesWithScores } from '@/lib/minimax'
 import GameBoard from './GameBoard'
@@ -51,8 +51,8 @@ export default function ThaiCheckersGame() {
       setCapturedPieces(move.captures)
     }
     
-    // Check if piece will be promoted
-    const piece = gameState.board[move.from.row][move.from.col]
+    // Get current state for the piece check
+    const piece = gameStateRef.current.board[move.from.row][move.from.col]
     const willPromote = piece && piece.type === 'man' && (
       (piece.player === 'red' && move.to.row === 7) ||
       (piece.player === 'black' && move.to.row === 0)
@@ -60,8 +60,9 @@ export default function ThaiCheckersGame() {
     
     // Apply move after animation delay
     setTimeout(() => {
-      const newBoard = makeMoveOnBoard(gameState.board, move)
-      const nextPlayer = gameState.currentPlayer === 'red' ? 'black' : 'red'
+      const currentState = gameStateRef.current
+      const newBoard = makeMoveOnBoard(currentState.board, move)
+      const nextPlayer = currentState.currentPlayer === 'red' ? 'black' : 'red'
       const gameStatus = isGameOver(newBoard, nextPlayer)
 
       setGameState({
@@ -86,44 +87,54 @@ export default function ThaiCheckersGame() {
       }
       
     }, 600) // Animation duration
-  }, [gameState])
+  }, [])
 
-  // Separate effect to handle AI moves
+  // Use ref to store current game state for AI
+  const gameStateRef = useRef(gameState)
+  gameStateRef.current = gameState
+
+  // Create refs for AI processing state
+  const aiProcessingRef = useRef(aiProcessing)
+  aiProcessingRef.current = aiProcessing
+  
+  const animatingMoveRef = useRef(animatingMove)
+  animatingMoveRef.current = animatingMove
+
+  // Separate effect to handle AI moves - only triggered when currentPlayer or gameOver changes
   useEffect(() => {
     console.log('AI useEffect triggered:', {
       currentPlayer: gameState.currentPlayer,
-      gameOver: gameState.gameOver,
-      aiProcessing,
-      animatingMove
+      gameOver: gameState.gameOver
     })
     
-    if (gameState.currentPlayer === 'red' && !gameState.gameOver && !aiProcessing && !animatingMove) {
-      console.log('AI turn started - setting up timeout')
-      setAiProcessing(true)
+    // Use setTimeout to check conditions after state has settled
+    const checkAIMove = setTimeout(() => {
+      const currentState = gameStateRef.current
+      const isProcessing = aiProcessingRef.current
+      const isAnimating = animatingMoveRef.current
       
-      const timeoutId = setTimeout(() => {
-        console.log('AI timeout executed - making move')
-        const aiRecommendation = getBestMove(gameState.board, 'red', 6)
-        if (aiRecommendation) {
-          console.log('AI found move:', aiRecommendation.move)
-          makeMove(aiRecommendation.move)
-        } else {
-          console.log('AI found no valid moves')
-        }
-        setAiProcessing(false)
-      }, 1500)
+      if (currentState.currentPlayer === 'red' && !currentState.gameOver && !isProcessing && !isAnimating) {
+        console.log('AI turn started - setting up timeout')
+        setAiProcessing(true)
+        
+        const aiTimeoutId = setTimeout(() => {
+          console.log('AI timeout executed - making move')
+          const gameState = gameStateRef.current
+          const aiRecommendation = getBestMove(gameState.board, 'red', 6)
+          if (aiRecommendation) {
+            console.log('AI found move:', aiRecommendation.move)
+            makeMove(aiRecommendation.move)
+          } else {
+            console.log('AI found no valid moves')
+          }
+          setAiProcessing(false)
+        }, 1500)
 
-      aiTimeoutRef.current = timeoutId
-      
-      // Return cleanup function that only clears if this specific timeout is still pending
-      return () => {
-        if (aiTimeoutRef.current === timeoutId) {
-          console.log('Cleaning up AI timeout')
-          clearTimeout(timeoutId)
-          aiTimeoutRef.current = null
-        }
+        aiTimeoutRef.current = aiTimeoutId
       }
-    }
+    }, 100) // Small delay to let animations settle
+    
+    return () => clearTimeout(checkAIMove)
   }, [gameState.currentPlayer, gameState.gameOver])
 
   const handleSquareClick = useCallback((row: number, col: number) => {

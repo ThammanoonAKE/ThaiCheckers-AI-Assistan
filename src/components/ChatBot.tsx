@@ -288,11 +288,11 @@ export default function ChatBot({ gameContext }: ChatBotProps) {
             <div className="flex flex-wrap gap-1">
               <span className="bg-gray-100 px-2 py-1 rounded text-xs cursor-pointer hover:bg-gray-200" 
                     onClick={() => setInputMessage('ท่าเดินนี้ดีไหม?')}>
-                "ท่าเดินนี้ดีไหม?"
+                &quot;ท่าเดินนี้ดีไหม?&quot;
               </span>
               <span className="bg-gray-100 px-2 py-1 rounded text-xs cursor-pointer hover:bg-gray-200"
                     onClick={() => setInputMessage('มีกลยุทธ์อะไรแนะนำไหม?')}>
-                "มีกลยุทธ์อะไรแนะนำไหม?"
+                &quot;มีกลยุทธ์อะไรแนะนำไหม?&quot;
               </span>
             </div>
           )}
